@@ -2,4 +2,4 @@
 #Once everything is set these comments can be removed
 print("Hello World!")
 x = 21
-print("What is " + x + "when divided by" + (x/3) + "?" "\nIt's " + (x/7) + "!!")
+print("What is %i when divided by %i?" "\nIt's %i!!" % (x, x/3, x/7)) 
