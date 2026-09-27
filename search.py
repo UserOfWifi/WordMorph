@@ -24,6 +24,7 @@ class BFS:
     """Class for BFS Search"""
 
     def __init__(self, problem):
+        print("BFS Initiated")
         self.problem = problem # the problem is an object 
         self.explored = set()
         self.frontier = f.Queue()
@@ -63,7 +64,8 @@ class DFS:
     """Class for DFS Search"""
 
     def __init__(self, problem):
-        self.problem # the problem is an object 
+        print("DFS Initiated")
+        self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.Stack()
 
@@ -101,7 +103,8 @@ class UCS:
     """Class for Uniform Cost Search"""
 
     def __init__(self, problem):
-        self.problem # the problem is an object 
+        print("UCS Initiated")
+        self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.PriorityQueue()
 
@@ -139,7 +142,7 @@ class GreedyBestFirst:
     """Class for Greedy Best First"""
 
     def __init__(self, problem):
-        self.problem # the problem is an object 
+        self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.PriorityQueue()
 
@@ -178,7 +181,7 @@ class AStar:
     """Class for A* Search"""
 
     def __init__(self, problem):
-        self.problem # the problem is an object 
+        self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.PriorityQueue()
 
