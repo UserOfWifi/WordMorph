@@ -24,7 +24,7 @@ class BFS:
     """Class for BFS Search"""
 
     def __init__(self, problem):
-        print("BFS Initiated | Please wait!")
+        print("BFS Initiated")
         self.problem = problem # the problem is an object 
         self.explored = set()
         self.frontier = f.Queue()
