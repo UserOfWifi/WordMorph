@@ -20,7 +20,9 @@ class Stack(Frontier):
 
     def add(self, state):
         """Add to the stack"""
-        self.frontier.insert(0, state) # add at the beginning 
+        self.frontier.insert(0, state) # add at the beginning
+        print("This has been added to the Stack: ", state)
+
 
 class Queue(Frontier):
     """

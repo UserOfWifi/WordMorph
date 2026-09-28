@@ -13,12 +13,12 @@ if __name__ == "__main__":
     print("Stack Made")
 
     my_stack.add("hello")
-    print("Hello added to stack")
+    # print("Hello added to stack")
 
     my_stack.add("How")
     my_stack.add("are")
     my_stack.add("you")
-    print("'How, are, you' added to stack")
+    # print("'How, are, you' added to stack")
 
     while not my_stack.is_empty(): # remove items from stack
         print(my_stack.pop())
@@ -39,9 +39,10 @@ if __name__ == "__main__":
         print(my_queue.pop())
     print("Queue is empty")
     print("\n\n")
-    with open('WordMorphText.csv', mode='r') as WM:
+    with open("WordMorphText.csv", mode='r') as WM:
         reader = csv.DictReader(WM)
         firstRow = next(reader)
         print("Column Names: ", firstRow)
         # for row in reader: # This prints all rows, it takes a while
         #     print("Column Names: ", row)
+    print("This is brand new!")

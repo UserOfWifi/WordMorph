@@ -18,6 +18,7 @@ class Maze:
                     self.goal.add((r, c))
  
     def neighbors(self, state):
+        print("Im running from Maze")
         r, c = state
         result = []
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
@@ -44,7 +45,7 @@ class Maze:
 
 if __name__ == "__main__":
     
-    from search import BFS, DFS, UCS, GreedyBestFirst, AStar # imports only called when this is the driver file 
+    from search import BFS, DFS, UCS, GreedyBestFirst, AStar# imports only called when this is the driver file 
 
  
     # ---- Maze ----
@@ -59,3 +60,24 @@ if __name__ == "__main__":
     ]
 
     # implement the code 
+    bigMaze = Maze(grid)
+
+    Breathe = BFS(bigMaze)
+    bResult = Breathe.search()
+    print("BFS: ", bResult)
+
+    Depth = DFS(bigMaze)
+    dResult = Depth.search()
+    print("DFS: ", dResult)
+
+    Ultimate = UCS(bigMaze)
+    uResult = Ultimate.search()
+    print("UCS: ", uResult)
+
+    Greed = GreedyBestFirst(bigMaze)
+    gResult = Greed.search()
+    print("GBF: ", gResult)
+
+    Star = AStar(bigMaze)
+    starResult = Star.search()
+    print("A*: ", starResult)
