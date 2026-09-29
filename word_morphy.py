@@ -7,7 +7,7 @@ print("Frontiers file being used:", f.__file__)
 print("Has Queue:", hasattr(f, "Queue"))
 
 data = pd.read_excel(
-    #r"C:\Users\ruvap\OneDrive\Desktop\AI CLASS\WordMorph\Copy of SUBTLEX-US frequency list with cost.xlsx"
+    
     "Copy of SUBTLEX-US frequency list with cost.xlsx"
 )
 
@@ -131,7 +131,7 @@ class SearchAlgorithm:
 
             for neighbor in neighbors:
 
-                if neighbor not in self.explored:
+                if neighbor not in self.paths: # only add a neigbor first time we discover it
 
                     # Store the path used to reach this neighbor.
                     self.paths[neighbor] = (
@@ -236,15 +236,16 @@ if __name__ == "__main__":
 
     test_cases = [
         ("COLD", "WARM"),
-        ("ALE", "NOW"),
-        ("NIGHT", "SHARE"),
-        ("DANGER", "HOPING"),
-        ("SELLING", "SOUNDED"),
         ("SHOPPING", "TRACKING"),
-        ("MUTTERING", "WITHERING"),
-        ("BLISTERING", "STUTTERING"),
-        ("NATIONALISM", "RATIONALIZE"),
-        ("UNREASONABLE", "UNSEASONABLY")
+        ("UNREASONABLE", "UNSEASONABLY"),
+        ("AND", "AAL"),
+        ("THAT", "ABEL"),
+        ("AAHED", "WATER"),
+        ("AAHED", "THERE"),
+        ("LITTLE", "MIDDLE"),
+        #("OCEAN ", "BEGAN")
+        ("ZOOMS", "THYME")
+        
     ]
 
     print("\nWORD MORPH TEST CASES")
@@ -333,3 +334,66 @@ if __name__ == "__main__":
                 ucs.cost[goal]
             )
             print("Time:", ucs_time, "seconds")
+
+    
+# MINI-DICTIONARY DEAD-END TEST
+
+mini_dictionary = {
+    "PIG",
+    "PIT",
+    "FIG",
+    "FOG",
+    "COG",
+    "COW"
+}
+
+mini_costs = {
+    "PIG": 4,
+    "PIT": 5,
+    "FIG": 6,
+    "FOG": 5,
+    "COG": 6,
+    "COW": 5
+}
+
+mini_neighbor_index = defaultdict(set)
+
+for word in mini_dictionary:
+    for i in range(len(word)):
+        pattern = word[:i] + "_" + word[i+1:]
+        mini_neighbor_index[pattern].add(word)
+
+# Save the original values
+original_dictionary = dictionary
+original_cost_of = cost_of
+original_neighbor_index = neighbor_index
+
+# Use mini versions
+dictionary = mini_dictionary
+cost_of = mini_costs
+neighbor_index = mini_neighbor_index
+
+print("\nMINI-DICTIONARY DEAD-END TEST")
+
+bfs = BFS("PIG", "COW", dictionary, data)
+bfs_path = bfs.search()
+
+print("BFS")
+print("Path:", " -> ".join(bfs_path))
+print("Steps:", len(bfs_path) - 1)
+print("Cost:", sum(get_cost(word) for word in bfs_path[1:]))
+
+ucs = UCS("PIG", "COW", dictionary, data)
+ucs_path = ucs.search()
+
+print("UCS")
+print("Path:", " -> ".join(ucs_path))
+print("Steps:", len(ucs_path) - 1)
+print("Cost:", sum(get_cost(word) for word in ucs_path[1:]))
+
+dictionary = original_dictionary
+cost_of = original_cost_of
+neighbor_index = original_neighbor_index
+
+
+print("PIG -> COW")
