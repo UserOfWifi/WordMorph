@@ -6,7 +6,6 @@ class WordMorph:
         self.start = starter
         self.goal = ender
 
-
     def neighbors(self, state):
         validWords = []
         entireList = pandas.read_csv('WordMorphText.csv', keep_default_na=False) #Had to add this cause SOMEWHERE there is a null/NaN value
@@ -29,22 +28,22 @@ class WordMorph:
                 validWords.append((word, cost))
         return sorted(validWords)
 
-
 if __name__ == "__main__":
     # from search import BFS, DFS, UCS, GreedyBestFirst, AStar
     from search import BFS, UCS
 
     test_cases = [
         # ("goat", "barn")
-        ("ale", "now"),
-        ("cold", "warm"),
-        ("night", "share"),
-        ("danger", "hoping"),
-        ("selling", "sounded"),
-        ("muttering", "withering"),
-        ("blistering", "stuttering"),
-        ("nationalism", "rationalize"),
-        ("unreasonable", "unseasonably"),
+        # ("ale", "now"),
+        # ("cold", "warm"),
+        # ("night", "share"),
+        # ("danger", "hoping"),
+        ("little", "middle"),
+        # ("selling", "sounded"),
+        # ("muttering", "withering"),
+        # ("blistering", "stuttering"),
+        # ("nationalism", "rationalize"),
+        # ("unreasonable", "unseasonably")
     ]
     for start, goal in test_cases:
 
