@@ -34,16 +34,19 @@ if __name__ == "__main__":
 
     test_cases = [
         # ("goat", "barn")
-        # ("ale", "now"),
-        # ("cold", "warm"),
-        # ("night", "share"),
+        ("and", "aal"),
+        ("cold", "warm"),
+        ("that", "abel"),
+        ("aahed", "water"),
+        ("aahed", "there"),
+        ("zooms", "thyme"),
         # ("danger", "hoping"),
         ("little", "middle"),
         # ("selling", "sounded"),
         # ("muttering", "withering"),
         # ("blistering", "stuttering"),
         # ("nationalism", "rationalize"),
-        # ("unreasonable", "unseasonably")
+        ("unreasonable", "unseasonably")
     ]
     for start, goal in test_cases:
 
