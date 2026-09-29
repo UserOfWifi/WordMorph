@@ -27,10 +27,13 @@ class WordMorph:
                 #print("|/|/|/|/|/|/|/|/| FIRST START")
                 validWords.append((word, cost))
         return sorted(validWords)
+    def h(self, state):
+        r, c = state
+        return min(abs(r - gr) + abs(c - gc) for gr, gc in self.goal)
 
 if __name__ == "__main__":
     # from search import BFS, DFS, UCS, GreedyBestFirst, AStar
-    from search import BFS, UCS
+    from search import BFS, UCS, AStar
 
     test_cases = [
         # ("goat", "barn")
@@ -44,7 +47,7 @@ if __name__ == "__main__":
         ("little", "middle"),
         # ("selling", "sounded"),
         # ("muttering", "withering"),
-        # ("blistering", "stuttering"),
+        # ("blistering", "stuttering"), #THIS ONE IS QUICK
         # ("nationalism", "rationalize"),
         ("unreasonable", "unseasonably")
     ]
@@ -66,6 +69,14 @@ if __name__ == "__main__":
         uResult = Uniform.search()
         print("UCS: ", uResult)
         print(f"Path Length: {len(uResult[0])}")
+        print(f"Finished in {time.time() - startTime:.2f} seconds\n---")
+
+        startTime = time.time()
+        
+        AmazingStar = AStar(wording)
+        aResult = AmazingStar.search()
+        print("A*: ", aResult)
+        print(f"Path Length: {len(aResult[0])} (From start to finish)") 
         print(f"Finished in {time.time() - startTime:.2f} seconds\n---")
 
     # with open("WordMorphText.csv", mode='r') as WM:
