@@ -24,7 +24,7 @@ class BFS:
     """Class for BFS Search"""
 
     def __init__(self, problem):
-        print("BFS Initiated")
+        print("BFS Initiated | Please wait!")
         self.problem = problem # the problem is an object 
         self.explored = set()
         self.frontier = f.Queue()
@@ -64,7 +64,7 @@ class DFS:
     """Class for DFS Search"""
 
     def __init__(self, problem):
-        print("DFS Initiated")
+        print("DFS Initiated | Please wait!")
         self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.Stack()
@@ -103,7 +103,7 @@ class UCS:
     """Class for Uniform Cost Search"""
 
     def __init__(self, problem):
-        print("UCS Initiated")
+        print("UCS Initiated | Please wait!")
         self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.PriorityQueue()
@@ -142,6 +142,7 @@ class GreedyBestFirst:
     """Class for Greedy Best First"""
 
     def __init__(self, problem):
+        print("Greedy Best Initiated | Please wait!")
         self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.PriorityQueue()
@@ -181,6 +182,7 @@ class AStar:
     """Class for A* Search"""
 
     def __init__(self, problem):
+        print("A* Initiated | Please wait!")
         self.problem = problem # the problem is an object (I ADDED "= problem") TO THIS
         self.explored = set()
         self.frontier = f.PriorityQueue()
@@ -213,5 +215,3 @@ class AStar:
                     self.update(nbr, g + w, path + [nbr])
         
         return None                   
-
-  

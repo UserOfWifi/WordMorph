@@ -31,71 +31,40 @@ class WordMorph:
 
 
 if __name__ == "__main__":
+    # from search import BFS, DFS, UCS, GreedyBestFirst, AStar
+    from search import BFS, UCS
 
-    from search import BFS, DFS, UCS, GreedyBestFirst, AStar
+    test_cases = [
+        # ("goat", "barn")
+        ("ale", "now"),
+        ("cold", "warm"),
+        ("night", "share"),
+        ("danger", "hoping"),
+        ("selling", "sounded"),
+        ("muttering", "withering"),
+        ("blistering", "stuttering"),
+        ("nationalism", "rationalize"),
+        ("unreasonable", "unseasonably"),
+    ]
+    for start, goal in test_cases:
 
-    # print("hello")       
-    # my_stack = f.Stack() # creating stack 
-    # print("Stack Made")
+        wording = WordMorph(start, goal)
+        startTime = time.time()
 
-    # my_stack.add("hello")
-    # # print("Hello added to stack")
+        print(f"\nWord morph selected: [{start} -> {goal}]")
+        Breathe = BFS(wording)
+        bResult = Breathe.search()
+        print("BFS: ", bResult)
+        print(f"Path Length: {len(bResult[0])}")
+        print(f"Finished in {time.time() - startTime:.2f} seconds\n")
 
-    # my_stack.add("How")
-    # my_stack.add("are")
-    # my_stack.add("you")
-    # # print("'How, are, you' added to stack")
+        startTime = time.time()
 
-    # while not my_stack.is_empty(): # remove items from stack
-    #     print(my_stack.pop())
-    # print("Stack is empty")
-
-    # my_queue = f.Queue() # creating stack 
-    # print("Queue Made")
-
-    # my_queue.add("hello")
-    # print("Hello added to queue")
-
-    # my_queue.add("How")
-    # my_queue.add("are")
-    # my_queue.add("you")
-    # print("'How, are, you' added to stack")
-
-    # while not my_queue.is_empty(): # remove items from stack
-    #     print(my_queue.pop())
-    # print("Queue is empty")
-    # print("\n\n")
-
-    # validWords = list()
-    # userStartWord = "COLD" #Ensure to use .lower()
-    # userEndWord = "warm"
-    # entireWM = pandas.read_csv('WordMorphText.csv', keep_default_na=False) #Had to add this cause SOMEWHERE there is a null/NaN value
-    # certainLength = entireWM[entireWM["length"] == len(userStartWord.lower())] #Instantly grabs all same length words without looping, efficient!
-    # print(certainLength)
-    # wordCol = certainLength.columns[0] #Speicifically looks at the word colum
-
-    # for word, cost in zip(certainLength[wordCol], certainLength["Cost"]):
-    #     #print("This is 'word': ", word)
-    #     diffs = 0
-    #     for x, y in zip(userStartWord.lower(), word):
-    #         if x!=y:
-    #             diffs += 1
-    #             if diffs>=2:
-    #                 diffs = 0
-    #                 break
-    #     if diffs == 1:
-    #         diffs = 0 #Reset back for userEndWord
-    #         #print("|/|/|/|/|/|/|/|/| FIRST START")
-    #         validWords.append((word, cost))
-    # print(validWords)
-
-    wording = WordMorph("blistering", "stuttering")
-    startTime = time.time()
-
-    Breathe = BFS(wording)
-    bResult = Breathe.search()
-    print("BFS: ", bResult)
-    print(f"Finished in {time.time() - startTime:.2f} seconds")
+        Uniform = UCS(wording)
+        uResult = Uniform.search()
+        print("UCS: ", uResult)
+        print(f"Path Length: {len(uResult[0])}")
+        print(f"Finished in {time.time() - startTime:.2f} seconds\n---")
 
     # with open("WordMorphText.csv", mode='r') as WM:
     #     reader = csv.DictReader(WM)
