@@ -8,7 +8,7 @@ print("Has Queue:", hasattr(f, "Queue"))
 
 data = pd.read_excel(
     
-    "Copy of SUBTLEX-US frequency list with cost.xlsx"
+    "Dataset.xlsx"
 )
 
 dictionary = set(data["Word"].dropna().str.upper())
